@@ -24,6 +24,10 @@
 <script>
     console.log('Debouncing!');
     const setDelay = (delay) => {
+        if (!parseFloat(delay)) {
+            alert("Delay must be a number!");
+            return;
+        }
         document.getElementById('display-delay').innerHTML = "Current Delay: " + delay + " seconds";
         console.log(delay);
     }
