@@ -15,13 +15,14 @@
     <br> <br> <br>
     <p id="display-delay"> Current Delay: 2.5 seconds</p>
     <form>
-        <textarea id="my-text" oninput="debounce(noteChange, 2500)()" cols="50" rows="10"> </textarea>
+        <textarea id="my-text" oninput="debounce(noteChange, delay_val)()" cols="50" rows="10"> </textarea>
     </form>
 
     <h3 id="the-text"> This text will change when you start typing... eventually </h3>
 </body>
 
 <script>
+    var delay_val = 2500;
     console.log('Debouncing!');
     const setDelay = (delay) => {
         if (!parseFloat(delay)) {
@@ -29,7 +30,8 @@
             return;
         }
         document.getElementById('display-delay').innerHTML = "Current Delay: " + delay + " seconds";
-        console.log(delay);
+        delay_val = delay * 1000;
+        console.log(delay_val);
     }
     const noteChange = () => {
         let text = document.getElementById('my-text').value;
